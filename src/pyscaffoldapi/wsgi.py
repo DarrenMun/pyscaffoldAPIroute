@@ -14,8 +14,8 @@ class Student(db.Model):
 	maths = db.Column(db.Integer)
 	chemistry = db.Column(db.Integer)
 
-	def __repr__(self):
-		return f"Student('{self.name}','{self.physics}','{self.maths}','{self.chemistry}')"
+	# def __repr__(self):
+	# 	return f"Student('{self.name}','{self.physics}','{self.maths}','{self.chemistry}')"
 
 @application.route('/', methods=['GET'])
 def student():
@@ -91,6 +91,7 @@ def update_results(indexId):
 	return jsonify({'students':'Pass'})
 
 if __name__ == '__main__':
+	db.create_all()
 	application.run()
 
 #curl -i -H "Content-Type: application/json" -X POST -d '{\"name\":\"Sivu\",\"physics\":30,\"maths\":90,\"chemistry\":10}' http://127.0.0.1:5000/results
